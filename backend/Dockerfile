@@ -38,4 +38,4 @@ COPY ./src /app
 
 # An ENTRYPOINT allows you to configure a container that will run as an executable.
 # Here, it also contains the entire streamlit run command for your app, so you don’t have to call it from the command line:
-CMD [ "uvicorn", "alfred.api.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD [ "uvicorn", "alfred.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,18 @@
+{
+  "template": "https://gitlab.com/m2hycon/internal/cookiecutter-data-science-template.git",
+  "commit": "e13af3d2bc8d0fca60fb2f82e95f610e7ab58341",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_slug": "alfred",
+      "project_name": "alfred",
+      "author": "Campus Hack",
+      "author_email": "your.email@example.com",
+      "container_name": "alfred",
+      "project_description": "A personal feed app",
+      "project_repo": "https://github.com/gordonwilliamsburg/alfred.git",
+      "_template": "https://gitlab.com/m2hycon/internal/cookiecutter-data-science-template.git"
+    }
+  },
+  "directory": null
+}

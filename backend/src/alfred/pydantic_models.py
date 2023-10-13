@@ -23,7 +23,6 @@ class Topic(BaseModel):
         return cls(
             topic_id=str(uuid.uuid4()),
             user_id=user_id,
-            topic_id=text,
             text=text,
             urls=urls,
         )

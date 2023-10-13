@@ -5,7 +5,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "8080:8080"
       # add any other environment variables your backend might need
     volumes:
       - ./backend:/app  # optional: for live code changes to reflect in the container

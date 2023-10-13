@@ -16,7 +16,7 @@ to install the pre-commit hooks.
 1. `cd` into location of `Dockerfile`.
 2. Build and tag the docker image:
     ```bash
-    docker buildx build --platform linux/amd64 -t us-central1-docker.pkg.dev/merantix-genai23ber-9525/alfred-cr/alfred-backend  . --load
+    docker buildx build --platform linux/amd64 -t us-central1-docker.pkg.dev/merantix-genai23ber-9525/alfred-cr/alfred-backend  .
     ```
     This makes sure the docker image is built for the amd64 architecture such that it runs on Google Platform, which might be different than the local machine's architecture.
 

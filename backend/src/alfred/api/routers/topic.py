@@ -16,9 +16,7 @@ async def healthcheck():
 async def save_topic_route(request: Request):
     body = await request.json()
     try:
-        topic = Topic.new(
-            text=body["topic"], user_id=body["user_id"], urls=body["urls"]
-        )
+        topic = Topic.new(text=body["text"], user_id=body["user_id"], urls=body["urls"])
         save_topic(topic)
         return JSONResponse(content={}, status_code=201)
 

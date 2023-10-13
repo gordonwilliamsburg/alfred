@@ -12,7 +12,6 @@ class Secrets(BaseSettings):
     "class for secrets imported from .env file"
 
     apify_key: str = Field("" if os.getenv("TESTING") else ..., env="APIFY_KEY")
-    database_url: str = Field("" if os.getenv("TESTING") else ..., env="DATABASE_URL")
 
     class Config:
         env_file = ".env"

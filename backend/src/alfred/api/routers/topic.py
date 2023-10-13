@@ -1,8 +1,9 @@
 # Importing necessary modules from FastAPI and SQLAlchemy
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import JSONResponse
-from pydantic_models import Topic
-from topics import get_topics, save_topic
+
+from alfred.pydantic_models import Topic
+from alfred.topics import get_topics, save_topic
 
 router = APIRouter()
 
@@ -13,7 +14,9 @@ async def healthcheck():
 
 
 @router.post("/save-topic")
-async def save_topic_route(request: Request):
+async def save_topic_route(
+    request: Request,
+):
     body = await request.json()
     try:
         topic = Topic.new(text=body["text"], user_id=body["user_id"], urls=body["urls"])

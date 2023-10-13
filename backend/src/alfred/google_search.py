@@ -1,10 +1,10 @@
 from typing import List
 
 from alfred.config import apify_client
-from alfred.pydantic_models import BaseResult
+from alfred.pydantic_models import Article
 
 
-def search_google(query: str) -> List[BaseResult]:
+def search_google(query: str) -> List[Article]:
     # Prepare the Actor input
     run_input = {
         "queries": query,
@@ -44,7 +44,7 @@ def search_google(query: str) -> List[BaseResult]:
         """
         organic_results = item.get("organicResults", [])
         results = [
-            BaseResult(
+            Article(
                 url=organic_result["url"],
                 title=organic_result["title"],
                 description=organic_result["description"],

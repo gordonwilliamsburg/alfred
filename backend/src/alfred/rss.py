@@ -3,10 +3,10 @@ from typing import List
 
 import feedparser
 
-from alfred.pydantic_models import RSSPost
+from alfred.pydantic_models import Article
 
 
-def get_rss_posts(url: str) -> List[RSSPost]:
+def get_rss_posts(url: str) -> List[Article]:
     feed = feedparser.parse(url)
     quadruplets = []
 
@@ -25,7 +25,7 @@ def get_rss_posts(url: str) -> List[RSSPost]:
         if hasattr(entry, "published_parsed"):
             timestamp = datetime(*entry.published_parsed[:6]).isoformat()
 
-        quadruplet = RSSPost(
+        quadruplet = Article(
             thumbnail=thumbnail,
             url=link,
             title=title,
@@ -38,9 +38,9 @@ def get_rss_posts(url: str) -> List[RSSPost]:
     return quadruplets
 
 
-def print_rss_stats(quadruplets: List[RSSPost]) -> None:
+def print_rss_stats(quadruplets: List[Article]) -> None:
     if quadruplets:
-        latest_post = max(quadruplets, key=lambda x: x.timestamp)
+        latest_post = max(quadruplets, key=lambda x: x.timestamp)  # type:ignore
         print("\nLatest post:\n")
         print(f"Title:\n{latest_post.title}")
         print(f"URL:\n{latest_post.url}")

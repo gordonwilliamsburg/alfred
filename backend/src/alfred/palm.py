@@ -4,10 +4,10 @@ from typing import Tuple
 from langchain.chat_models import ChatVertexAI
 
 from alfred.json_utils import clean_json_string
-from alfred.pydantic_models import RSSPost, Topic
+from alfred.pydantic_models import Article, Topic
 
 
-def recommend_post_with_palm(topic: Topic, rss_post: RSSPost) -> Tuple[bool, str]:
+def recommend_post_with_palm(topic: Topic, feed_post: Article) -> Tuple[bool, str]:
     output = ask_text(
         f"""
         I will give you a user description of a topic he wishes to follow and a news article content.
@@ -24,8 +24,8 @@ def recommend_post_with_palm(topic: Topic, rss_post: RSSPost) -> Tuple[bool, str
         User Topic Description:
         - {topic.text}
 
-        Article Title: {rss_post.title}
-        Article Description: {rss_post.description}
+        Article Title: {feed_post.title}
+        Article Description: {feed_post.description}
 
         Now go!
     """.replace(
@@ -37,7 +37,7 @@ def recommend_post_with_palm(topic: Topic, rss_post: RSSPost) -> Tuple[bool, str
     output = json.loads(output)
 
     print(f"Topic: {topic.text}")
-    print(f"Post: {rss_post.description}")
+    print(f"Post: {feed_post.description}")
     print(output)
     return output["worth_it"], output["article-reasoning"]  # type: ignore
 

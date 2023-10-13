@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from alfred.get_recommendations import recommend
 from alfred.get_topics import get_topics
+from alfred.google_search import search_google
 from alfred.pydantic_models import Recommendation
 from alfred.rss import get_rss_posts
 
@@ -17,8 +18,9 @@ async def get_curation(user_id: str):
 
     recommendations = []
     for topic in topics:
-        rss_feed = []
+        feed = []
         for url in topic.urls:
-            rss_feed.extend(get_rss_posts(url=url))
-        recommendations.extend(recommend(topic=topic, rss_feed=rss_feed))
+            feed.extend(get_rss_posts(url=url))
+        feed.extend(search_google(query=topic))
+        recommendations.extend(recommend(topic=topic, feed=feed))
     return recommendations

@@ -18,21 +18,11 @@ class Secrets(BaseSettings):
         env_file_encoding = "utf-8"
 
 
-class DataSettings(BaseSettings):
-    """Data settings class representing data-related configuration."""
+class GoogleSettings(BaseSettings):
+    """Google settings class representing google cloud-related configuration."""
 
-    data_file: str
-    data_columns: List[str]
-
-    class Config:
-        extra = "ignore"
-
-
-class InputSettings(BaseSettings):
-    """Input settings class representing input-related configuration."""
-
-    input_size: int
-    batch_size: int
+    project_id: str
+    region: str
 
     class Config:
         extra = "ignore"
@@ -54,5 +44,4 @@ def from_yaml(cls: Type[T], yaml_file: str) -> T:
 
 
 secrets = Secrets()
-data_settings = from_yaml(DataSettings, "configs/data_settings.yaml")
-input_settings = from_yaml(InputSettings, "configs/input_settings.yaml")
+google_settings = from_yaml(GoogleSettings, "configs/google_settings.yaml")

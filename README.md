@@ -29,3 +29,9 @@ to install the pre-commit hooks.
     ```bash
     gcloud run deploy alfred-backend-service --image us-central1-docker.pkg.dev/merantix-genai23ber-9525/alfred-cr/alfred-backend
     ```
+# Testing Docker Image locally
+After building the docker image from step 2. in the above, run:
+```bash
+PORT=8080 && docker run -p 9090:${PORT} -e PORT=${PORT} us-central1-docker.pkg.dev/merantix-genai23ber-9525/alfred-cr/alfred-backend
+```
+Then navigate to `http://127.0.0.1:9090/`.

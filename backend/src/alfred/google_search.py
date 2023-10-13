@@ -57,4 +57,4 @@ def search_google(query: str) -> List[Article]:
     return results
 
 
-print(search_google("Food in new york for upscale high end trendy fusion kitchen"))
+# print(search_google("Food in new york for upscale high end trendy fusion kitchen"))

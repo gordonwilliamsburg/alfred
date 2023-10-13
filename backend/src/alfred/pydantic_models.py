@@ -18,9 +18,15 @@ class Topic(BaseModel):
     urls: List[str]
 
 
-class RSSPost(BaseModel):
-    thumbnail: Optional[str]
+# the result coming from google search
+class BaseResult(BaseModel):
     url: str
     title: str
     description: Optional[str]
-    timestamp: str
+    timestamp: Optional[str]
+    position: Optional[int]  # the ranked position
+    emphasizedKeywords: Optional[List[str]]  # list of emphasized keywords
+
+
+class RSSPost(BaseResult):
+    thumbnail: Optional[str]

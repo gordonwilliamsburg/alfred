@@ -2,6 +2,7 @@ import os
 from typing import List, Type, TypeVar
 
 import yaml
+from apify_client import ApifyClient
 from pydantic import BaseSettings, Field
 
 T = TypeVar("T", bound=BaseSettings)
@@ -10,7 +11,7 @@ T = TypeVar("T", bound=BaseSettings)
 class Secrets(BaseSettings):
     "class for secrets imported from .env file"
 
-    api_key: str = Field("" if os.getenv("TESTING") else ..., env="API_KEY")
+    apify_key: str = Field("" if os.getenv("TESTING") else ..., env="APIFY_KEY")
     database_url: str = Field("" if os.getenv("TESTING") else ..., env="DATABASE_URL")
 
     class Config:
@@ -45,3 +46,4 @@ def from_yaml(cls: Type[T], yaml_file: str) -> T:
 
 secrets = Secrets()
 google_settings = from_yaml(GoogleSettings, "configs/google_settings.yaml")
+apify_client = ApifyClient(token=secrets.apify_key)

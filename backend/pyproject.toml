@@ -26,6 +26,10 @@ google-cloud-documentai = "^2.20.0"
 protobuf = "^3.20.0"
 feedparser = "^6.0.10"
 google-generativeai = "^0.2.1"
+apify-client = "^1.4.1"
+python-dotenv = "^1.0.0"
+apify = "^1.1.5"
+beautifulsoup4 = "^4.12.2"
 
 
 

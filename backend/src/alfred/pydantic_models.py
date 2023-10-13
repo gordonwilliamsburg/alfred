@@ -1,3 +1,4 @@
+import uuid
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -16,6 +17,16 @@ class Topic(BaseModel):
     topic_id: str
     text: str
     urls: List[str]
+
+    @classmethod
+    def new(cls, text: str, user_id: str, urls: List[str]):
+        return cls(
+            topic_id=str(uuid.uuid4()),
+            user_id=user_id,
+            topic_id=text,
+            text=text,
+            urls=urls,
+        )
 
 
 # the result coming from google search

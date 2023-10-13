@@ -30,6 +30,7 @@ apify-client = "^1.4.1"
 python-dotenv = "^1.0.0"
 apify = "^1.1.5"
 beautifulsoup4 = "^4.12.2"
+google-cloud-firestore = "^2.12.0"
 
 
 

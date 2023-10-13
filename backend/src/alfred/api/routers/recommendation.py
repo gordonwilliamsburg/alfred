@@ -4,10 +4,10 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 
 from alfred.get_recommendations import recommend
-from alfred.get_topics import get_topics
 from alfred.google_search import search_google
 from alfred.pydantic_models import Recommendation
 from alfred.rss import get_rss_posts
+from alfred.topics import get_topics
 
 router = APIRouter()
 

@@ -4,6 +4,6 @@ from fastapi import APIRouter, Depends, HTTPException
 router = APIRouter()
 
 
-@router.get("/healthcheck")
+@router.get("/")
 async def healthcheck():
     return {"status": "healthy"}
